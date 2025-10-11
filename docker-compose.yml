@@ -1,8 +1,9 @@
 services:
   postgis:
-    build:  .
+    build: .
+    network_mode: "host"
     ports:
-      - "25432:5432"  # 此处表示宿主机端口25432，可按需修改
+      # - "25432:5432"  # 此处表示宿主机端口25432，可按需修改
     environment:
       - "POSTGRES_PASSWORD=ds123456"  # 设置数据库中postgres用户的密码
     volumes:
