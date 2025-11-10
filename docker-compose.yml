@@ -6,7 +6,7 @@ services:
     environment:
       - "POSTGRES_PASSWORD=ds123456"  # 设置数据库中postgres用户的密码
     volumes:
-      # - ./postgres_data:/var/lib/postgresql/data 
-      # - ./postgres_logs:/var/lib/postgresql/logs
+      - ./postgres_data:/var/lib/postgresql/data 
+      - ./postgres_logs:/var/lib/postgresql/logs
       - ./postgresql.conf:/etc/postgresql/postgresql.conf
     command: [ "-c", "config_file=/etc/postgresql/postgresql.conf" ]  # 如按此文件默认在上面映射了postgresql.conf文件，则必须此行
