@@ -9,9 +9,10 @@ RUN echo "deb https://mirrors.aliyun.com/debian/ bullseye main non-free contrib"
       apt-get update \
       && apt-get install -y --no-install-recommends procps \
       && apt-get install -y --no-install-recommends postgresql-14-cron \
-      && apt-get install -y --no-install-recommends postgis \
       && apt-get clean \
       && rm -rf /var/lib/apt/lists/*
+
+RUN echo "CREATE EXTENSION pg_cron;" > /docker-entrypoint-initdb.d/init-pg_cron.sql
 
 # [optional] set time zone
 RUN ln -snf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
